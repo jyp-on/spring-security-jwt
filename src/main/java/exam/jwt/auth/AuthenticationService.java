@@ -29,7 +29,19 @@ public class AuthenticationService {
             .lastname(request.getLastName())
             .email(request.getEmail())
             .password(passwordEncoder.encode(request.getPassword()))
-            .role(Role.USER)
+            .role(Role.ROLE_USER)
+            .build();
+        userRepository.save(user);
+        return "회원가입 성공";
+    }
+
+    public String registerAdmin(RegisterRequest request) {
+        var user = User.builder()
+            .firstname(request.getFirstName())
+            .lastname(request.getLastName())
+            .email(request.getEmail())
+            .password(passwordEncoder.encode(request.getPassword()))
+            .role(Role.ROLE_ADMIN)
             .build();
         userRepository.save(user);
         return "회원가입 성공";
