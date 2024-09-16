@@ -31,7 +31,7 @@ public class SecurityConfiguration {
                 .authenticationEntryPoint(customAuthenticationEntryPoint)
                 .accessDeniedHandler(accessDeniedHandler))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/v1/auth/**").permitAll()
+                .requestMatchers("/api/v1/auth/**", "/api/v1/car/**").permitAll()
                 .anyRequest().authenticated()
             )
             .sessionManagement(session -> session
